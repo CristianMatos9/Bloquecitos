@@ -11,7 +11,7 @@ public class MoveBlack : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Black
   - White
+  - tablero
   layers:
   - Default
   - TransparentFX

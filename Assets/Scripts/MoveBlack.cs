@@ -47,8 +47,11 @@ public class MoveBlack : MonoBehaviour
 
     private void OnMouseUp()
     {
-        isDragging = false;
-        TrySnap();
+        if(isDragging)
+        {
+            isDragging = false;
+            TrySnap();
+        }
     }
 
     private void PhoneMovement()
@@ -74,8 +77,11 @@ public class MoveBlack : MonoBehaviour
                     break;
                 case TouchPhase.Ended:
                 case TouchPhase.Canceled:
-                    isDragging = false;
-                    TrySnap();
+                    if(isDragging)
+                    {
+                        isDragging = false;
+                        TrySnap();
+                    }
                     break;
             }
         }

@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject Botones;
+    [SerializeField]
+    private GameObject Info;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,5 +50,19 @@ public class MenuManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+   
+
+    public void Ifo()
+    {
+        Botones.SetActive(false);
+        Info.SetActive(true);
+    }
+
+    public void NoInfo()
+    {
+        Botones.SetActive(true);
+        Info.SetActive(false);
     }
 }

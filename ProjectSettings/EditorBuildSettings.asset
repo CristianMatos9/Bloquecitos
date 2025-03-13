@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: faa867e21ffc387468503e4790582a40
+  - enabled: 1
+    path: Assets/Scenes/scenakeke.unity
+    guid: ee2001fddf2609f4faa027eab3d08e8e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

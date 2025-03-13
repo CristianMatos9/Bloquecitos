@@ -1357,6 +1357,64 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!1 &646035881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 646035883}
+  - component: {fileID: 646035882}
+  m_Layer: 0
+  m_Name: RegionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &646035882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646035881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdd7b48aebca174b86353a1e005a01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRegions:
+  - targetCell: {fileID: 1069805195}
+    requiredBlocks: 8
+    occupiedPositions: []
+    currentBlocks: 0
+    regionColor: {r: 1, g: 0, b: 0, a: 0}
+  - targetCell: {fileID: 1732152267}
+    requiredBlocks: 12
+    occupiedPositions: []
+    currentBlocks: 0
+    regionColor: {r: 0.10617697, g: 1, b: 0, a: 0}
+  blocksParent: {fileID: 0}
+  gridSize: 0.64
+  debugText: {fileID: 0}
+--- !u!4 &646035883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646035881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &685886528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,6 +4397,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pieza 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7634027751714547317, guid: 1446370e860762b46bc4e8f466dff664, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8399143751097141399, guid: 1446370e860762b46bc4e8f466dff664, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4396,6 +4462,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pieza L en espejo
       objectReference: {fileID: 0}
+    - target: {fileID: 5444637592300865267, guid: c04b23e65ca23a24b8a424901c87aee6, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329986024776973817, guid: c04b23e65ca23a24b8a424901c87aee6, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4449,9 +4523,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 633074422235166584, guid: 2959a0b7bb7d25d4a965836cfb46e012, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     - target: {fileID: 8487139935217454385, guid: 2959a0b7bb7d25d4a965836cfb46e012, type: 3}
       propertyPath: m_Name
       value: Pieza doble
+      objectReference: {fileID: 0}
+    - target: {fileID: 8487139935217454385, guid: 2959a0b7bb7d25d4a965836cfb46e012, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4506,9 +4588,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7229467612631155545, guid: eb28afbe5f2e0654d975514e9cbed678, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     - target: {fileID: 8470863002750106095, guid: eb28afbe5f2e0654d975514e9cbed678, type: 3}
       propertyPath: m_Name
       value: Pieza L al reves
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470863002750106095, guid: eb28afbe5f2e0654d975514e9cbed678, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4523,6 +4613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329431078078417209, guid: eca1343738270ce4491b02d77725412b, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     - target: {fileID: 1509248587504748292, guid: eca1343738270ce4491b02d77725412b, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -4571,6 +4665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pieza villager tumbado
       objectReference: {fileID: 0}
+    - target: {fileID: 8801156979273929758, guid: eca1343738270ce4491b02d77725412b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8899278536634357669, guid: eca1343738270ce4491b02d77725412b, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -4595,6 +4693,10 @@ PrefabInstance:
     - target: {fileID: 189055571659509677, guid: fcb598651811ac840b46b86a2838995d, type: 3}
       propertyPath: m_Name
       value: Pieza 1 al reves
+      objectReference: {fileID: 0}
+    - target: {fileID: 189055571659509677, guid: fcb598651811ac840b46b86a2838995d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 711499899405338089, guid: fcb598651811ac840b46b86a2838995d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4636,6 +4738,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8565910415672245493, guid: fcb598651811ac840b46b86a2838995d, type: 3}
+      propertyPath: regionsManager
+      value: 
+      objectReference: {fileID: 646035882}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4657,3 +4763,4 @@ SceneRoots:
   - {fileID: 605715608172047049}
   - {fileID: 412325879162850809}
   - {fileID: 3825681377892067762}
+  - {fileID: 646035883}

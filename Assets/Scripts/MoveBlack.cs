@@ -13,6 +13,9 @@ public class MoveBlack : MonoBehaviour
     private GameObject[] allCells;
     private Vector2 gridSize = new Vector2(0.64f, 0.64f);
 
+    public TargetRegionsManager regionsManager;
+    private bool wasPlacedInRegion = false;
+
     void Start()
     {
         startPosition = transform.position;
@@ -33,6 +36,12 @@ public class MoveBlack : MonoBehaviour
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = transform.position - new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+
+        if (regionsManager != null && wasPlacedInRegion)
+        {
+            wasPlacedInRegion = !regionsManager.RemoveBlocksFromRegion(gameObject);
+        }
+
         isDragging = true;
     }
 
@@ -47,7 +56,7 @@ public class MoveBlack : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if(isDragging)
+        if (isDragging)
         {
             isDragging = false;
             TrySnap();
@@ -66,6 +75,12 @@ public class MoveBlack : MonoBehaviour
                     if (IsTouchingObject(touchPosition))
                     {
                         offset = transform.position - new Vector3(touchPosition.x, touchPosition.y, transform.position.z);
+
+                        if (regionsManager != null && wasPlacedInRegion)
+                        {
+                            wasPlacedInRegion = !regionsManager.RemoveBlocksFromRegion(gameObject);
+                        }
+
                         isDragging = true;
                     }
                     break;
@@ -77,7 +92,7 @@ public class MoveBlack : MonoBehaviour
                     break;
                 case TouchPhase.Ended:
                 case TouchPhase.Canceled:
-                    if(isDragging)
+                    if (isDragging)
                     {
                         isDragging = false;
                         TrySnap();
@@ -115,14 +130,29 @@ public class MoveBlack : MonoBehaviour
             targetPosition.x = Mathf.Round(targetPosition.x / gridSize.x) * gridSize.x;
             targetPosition.y = Mathf.Round(targetPosition.y / gridSize.y) * gridSize.y;
 
+            Vector3 originalPosition = transform.position;
+            transform.position = targetPosition;
+
             if (CanFitInGrid(targetPosition))
             {
-                transform.position = targetPosition;
+                if (regionsManager != null && regionsManager.TryAddBlocksToRegion(gameObject))
+                {
+                    wasPlacedInRegion = true;
+
+                    transform.position = targetPosition;
+
+                    this.enabled = false;
+                }
+                else
+                {
+                    transform.position = startPosition;
+                    wasPlacedInRegion = false;
+                }
             }
             else
             {
-                Debug.Log("No cabe");
                 transform.position = startPosition;
+                wasPlacedInRegion = false;
             }
         }
     }
@@ -154,6 +184,48 @@ public class MoveBlack : MonoBehaviour
             }
         }
 
+        if (!CheckOverlapWithOtherBlackBlocks(newPosition))
+        {
+            return false;
+        }
+
         return true;
+    }
+
+    bool CheckOverlapWithOtherBlackBlocks(Vector2 newPosition)
+    {
+        GameObject[] allBlackBlocks = GameObject.FindGameObjectsWithTag("Black");
+
+        foreach (Vector2 localPos in blackBlocks)
+        {
+            Vector2 worldPos = newPosition + localPos;
+
+            worldPos.x = Mathf.Round(worldPos.x / gridSize.x) * gridSize.x;
+            worldPos.y = Mathf.Round(worldPos.y / gridSize.y) * gridSize.y;
+
+            foreach (GameObject blackBlock in allBlackBlocks)
+            {
+                if (blackBlock.transform.IsChildOf(transform))
+                    continue;
+
+                Vector2 otherBlockPos = blackBlock.transform.position;
+
+                otherBlockPos.x = Mathf.Round(otherBlockPos.x / gridSize.x) * gridSize.x;
+                otherBlockPos.y = Mathf.Round(otherBlockPos.y / gridSize.y) * gridSize.y;
+
+                if (Vector2.Distance(worldPos, otherBlockPos) < 0.1f)
+                {
+                    Debug.Log("Colisión con otro bloque negro");
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public void EnableMovement()
+    {
+        this.enabled = true;
     }
 }

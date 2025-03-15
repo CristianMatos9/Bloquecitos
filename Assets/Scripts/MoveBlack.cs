@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -12,6 +13,7 @@ public class MoveBlack : MonoBehaviour
     private List<Vector2> blackBlocks = new List<Vector2>();
     private GameObject[] allCells;
     private Vector2 gridSize = new Vector2(0.64f, 0.64f);
+    public AudioSource placeSound;
 
     public TargetRegionsManager regionsManager;
     private bool wasPlacedInRegion = false;
@@ -154,7 +156,19 @@ public class MoveBlack : MonoBehaviour
                 transform.position = startPosition;
                 wasPlacedInRegion = false;
             }
+            if (regionsManager != null && regionsManager.TryAddBlocksToRegion(gameObject))
+            {
+                wasPlacedInRegion = true;
+                transform.position = targetPosition;
+                this.enabled = false;
+
+                if (placeSound != null)
+                {
+                    placeSound.Play(); // Reproducir el sonido al colocar la ficha
+                }
+            }
         }
+       
     }
 
     bool CanFitInGrid(Vector2 newPosition)

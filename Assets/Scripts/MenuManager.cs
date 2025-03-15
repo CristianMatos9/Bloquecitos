@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public void Turorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void Lvl1()

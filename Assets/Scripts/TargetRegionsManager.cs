@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TargetRegionsManager : MonoBehaviour
 {
+   
+    public GameObject winPanel;
     [System.Serializable]
+  
     public class TargetRegion
     {
         public GameObject targetCell;
@@ -192,6 +195,28 @@ public class TargetRegionsManager : MonoBehaviour
         targetRegions[regionIndex].currentBlocks += blockPositions.Count;
 
         UpdateDebugText();
+        if (CheckWinCondition())
+        {
+            ShowWinPanel(); // Llamar al método para mostrar la pantalla de victoria
+        }
+    }
+    private bool CheckWinCondition()
+    {
+        foreach (var region in targetRegions)
+        {
+            if (region.currentBlocks < region.requiredBlocks)
+            {
+                return false; // Aún falta completar regiones
+            }
+        }
+        return true; // Todas las regiones están completas
+    }
+
+    private void ShowWinPanel()
+    {
+        Debug.Log("¡Victoria! Todas las regiones están completas.");
+        // Aquí activas el panel de victoria, por ejemplo:
+         winPanel.SetActive(true);
     }
 
     private void UpdateDebugText()

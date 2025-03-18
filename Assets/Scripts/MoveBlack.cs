@@ -15,6 +15,7 @@ public class MoveBlack : MonoBehaviour
 
     public TargetRegionsManager regionsManager;
     private bool wasPlacedInRegion = false;
+    [SerializeField] private AudioSource clip;
 
     void Start()
     {
@@ -140,6 +141,11 @@ public class MoveBlack : MonoBehaviour
                     wasPlacedInRegion = true;
 
                     transform.position = targetPosition;
+
+                    if (clip != null)
+                    {
+                        clip.Play();
+                    }
 
                     this.enabled = false;
                 }

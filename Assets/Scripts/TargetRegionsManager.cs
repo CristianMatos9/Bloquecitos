@@ -22,6 +22,8 @@ public class TargetRegionsManager : MonoBehaviour
     private Dictionary<int, HashSet<Vector2>> regionGroups = new Dictionary<int, HashSet<Vector2>>();
     private Dictionary<Vector2, int> blockToRegion = new Dictionary<Vector2, int>();
 
+    [SerializeField] private GameObject winPanel;
+
     void Start()
     {
         for (int i = 0; i < targetRegions.Count; i++)
@@ -211,7 +213,7 @@ public class TargetRegionsManager : MonoBehaviour
 
         if (allRegionsComplete)
         {
-            Debug.Log("Victoria");
+            winPanel.SetActive(true);
         }
     }
 

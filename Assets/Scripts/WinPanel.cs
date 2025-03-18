@@ -27,7 +27,7 @@ public class WinPanel : MonoBehaviour
     }
     public void Lvl2()
     {
-        SceneManager.LoadScene("lvl2");
+        SceneManager.LoadScene("SampleScene");
 
     }
     public void Lvl3()

@@ -159,6 +159,7 @@ public class MoveBlack : MonoBehaviour
             {
                 transform.position = startPosition;
                 wasPlacedInRegion = false;
+                Debug.Log("Problema 2");
             }
         }
     }

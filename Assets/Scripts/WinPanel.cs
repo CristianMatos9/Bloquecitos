@@ -37,7 +37,7 @@ public class WinPanel : MonoBehaviour
     }
     public void Lvl4()
     {
-        SceneManager.LoadScene("lvl");
+        SceneManager.LoadScene("lvl4");
 
     }
 
